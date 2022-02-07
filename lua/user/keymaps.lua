@@ -6,6 +6,7 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
+keymap("", "q", "<Nop>", opts)
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -25,13 +26,23 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Unix terminal text navigation
+keymap("i", "<C-a>", "<Home>", opts)
+keymap("i", "<C-e>", "<End>", opts)
+keymap("n", "<C-a>", "<Home>", opts)
+keymap("n", "<C-e>", "<End>", opts)
+keymap("v", "<C-a>", "<Home>", opts)
+keymap("v", "<C-e>", "<End>", opts)
+
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-j>", ":resize -2<CR>", opts)
+keymap("n", "<C-k>", ":resize +2<CR>", opts)
+keymap("n", "<C-h>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-l>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
+keymap("n", "<TAB>", ":bnext<CR>", opts)
+keymap("n", "<S><TAB>", ":bprevious<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
